@@ -8,7 +8,7 @@ python-engineio,
 python-socketio 
 
 ## #What it does 
-If multiple users are signed with same id and one of them changes the password, all others users will be logged out automatically ,except the one who has the password.
+If multiple users are signed with same id and one of them changes the password, all others users will be logged out automatically ,except the one who has changed the password.
 
 
 
