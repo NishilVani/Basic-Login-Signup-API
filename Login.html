@@ -1,0 +1,82 @@
+<html>
+    <style>
+        .form-group {
+            padding-left: 250px;
+            padding-right: 250px;
+        }
+    </style>
+    <head>
+        <title>Log In</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body style="text-align: center">
+        <script type="text/javascript">
+            function login() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var settings = {
+                    url: "http://127.0.0.1:5000/login",
+                    method: "POST",
+                    timeout: 0,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    data: JSON.stringify({
+                        username: username,
+                        password: password,
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    if (response.Login == "Successfull") {
+                        location.href =
+                            "./index.html?username=" +
+                            username +
+                            "&password=" +
+                            password;
+                    } else {
+                        alert(response.Login);
+                    }
+                });
+            }
+        </script>
+        <h3 align="center">Login</h3>
+        <div class="form-group">
+            <label>Username</label>
+            <input
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Enter Username"
+            />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+            />
+        </div>
+        <br />
+        <button onclick="login()" type="submit" class="btn btn-primary">
+            Login
+        </button>
+    </body>
+</html>
